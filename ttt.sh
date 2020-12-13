@@ -81,7 +81,7 @@ done
 # test all posible moves for valid
 # if valid, test against win state
 # take the win
-# else test opposite mark for win state (switch player should be a function)
+# else test opposite mark for win state 
 # take the block
 # else take center
 # else take random
@@ -131,10 +131,14 @@ check_win
 
 # valid move, but no win, so switch players
 if [ $win == false ] && [ $mark_valid == true ]
-	then if [ $current_player == X ]
-		then current_player=O
-		else current_player=X
-	fi
+then switch_players 
+fi
+}
+
+function switch_players {
+if [ $current_player == X ]
+then current_player=O
+else current_player=X
 fi
 }
 
