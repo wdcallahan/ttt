@@ -77,6 +77,17 @@ while true; do
     esac
 done
 
+# computer AI strategy
+# test all posible moves for valid
+# if valid, test against win state
+# take the win
+# else test opposite mark for win state (switch player should be a function)
+# take the block
+# else take center
+# else take random
+
+
+
 while true; do
     read -p "Who will go first (X or O)? " current_player
     case $current_player in
