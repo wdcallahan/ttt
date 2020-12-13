@@ -14,9 +14,36 @@ function print_board { # do not call until init'd by new_game
 
 
 function check_win { # only call this after someone makes their move
-if [[ "$spot1" == "$current_player" && "$spot2" == "$current_player" && "$spot3" == "$current_player" ]] || [[ "$spot4" == "$current_player" && "$spot5" == "$current_player" && "$spot6" == "$current_player" ]] || [[ "$spot7" == "$current_player" && "$spot8" == "$current_player" && "$spot9" == "$current_player" ]] || [[ "$spot1" == "$current_player" && "$spot4" == "$current_player" && "$spot7" == "$current_player" ]] || [[ "$spot2" == "$current_player" && "$spot5" == "$current_player" && "$spot8" == "$current_player" ]] || [[ "$spot3" == "$current_player" && "$spot6" == "$current_player" && "$spot9" == "$current_player" ]] || [[ "$spot1" == "$current_player" && "$spot5" == "$current_player" && "$spot9" == "$current_player" ]] || [[ "$spot3" == "$current_player" && "$spot5" == "$current_player" && "$spot7" == "$current_player" ]]
+if [[ "$spot1" == "$current_player" && "$spot2" == "$current_player" && "$spot3" == "$current_player" ]] ||\
+   [[ "$spot4" == "$current_player" && "$spot5" == "$current_player" && "$spot6" == "$current_player" ]] ||\
+   [[ "$spot7" == "$current_player" && "$spot8" == "$current_player" && "$spot9" == "$current_player" ]] ||\
+   [[ "$spot1" == "$current_player" && "$spot4" == "$current_player" && "$spot7" == "$current_player" ]] ||\
+   [[ "$spot2" == "$current_player" && "$spot5" == "$current_player" && "$spot8" == "$current_player" ]] ||\
+   [[ "$spot3" == "$current_player" && "$spot6" == "$current_player" && "$spot9" == "$current_player" ]] ||\
+   [[ "$spot1" == "$current_player" && "$spot5" == "$current_player" && "$spot9" == "$current_player" ]] ||\
+   [[ "$spot3" == "$current_player" && "$spot5" == "$current_player" && "$spot7" == "$current_player" ]]
 	then win=true
 fi
+
+
+# check for tie
+# if tie, then check for cowsay and exit with or without
+
+if [[ "$spot1" -ne "1" && "$spot2" -ne "2" && "$spot3" -ne "3" &&\
+      "$spot4" -ne "4" && "$spot5" -ne "5" && "$spot6" -ne "6" &&\
+      "$spot7" -ne "7" && "$spot8" -ne "8" && "$spot9" -ne "9" ]] 
+# this proves no spaces are still in their original numbered state
+then
+	if command -v cowsay &> /dev/null # is cowsay installed?
+	then cowsay -l | grep -q stimpy   # if so, do you have stimpy?
+		if [ $? -eq 0 ]
+		then cowsay -f stimpy "No moves are available."
+			fi
+		else echo No moves are available. # if not, just echo normal
+	fi
+	exit 1 # out because of tie
+fi
+	
 
 }
 
