@@ -39,8 +39,10 @@ then
 		if [ $? -eq 0 ]
 		then cowsay -f stimpy "No moves are available."
 			fi
-		else echo No moves are available. # if not, just echo normal
+		else
+			echo No moves are available. # if not, just echo normal
 	fi
+	print_board
 	exit 1 # out because of tie
 fi
 	
