@@ -156,9 +156,12 @@ clear
 echo " "
 echo "   TIC-TAC-TOE! Three in a row!!"
 
-if [ $current_player == X ]
+if command -v banner # only do this is they have banner
+then
+	if [ $current_player == X ]
 	then  banner " XXX"
 	else banner " OOO"
+	fi
 fi
 
 print_board
