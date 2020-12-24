@@ -31,7 +31,7 @@ fi
 
 if [[ "$spot1" -ne "1" && "$spot2" -ne "2" && "$spot3" -ne "3" &&\
       "$spot4" -ne "4" && "$spot5" -ne "5" && "$spot6" -ne "6" &&\
-      "$spot7" -ne "7" && "$spot8" -ne "8" && "$spot9" -ne "9" ]] 
+      "$spot7" -ne "7" && "$spot8" -ne "8" && "$spot9" -ne "9" && $win = true ]] 
 # this proves no spaces are still in their original numbered state
 then
 	if command -v cowsay &> /dev/null # is cowsay installed?
