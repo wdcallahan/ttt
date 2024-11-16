@@ -158,7 +158,7 @@ clear
 echo " "
 echo "   TIC-TAC-TOE! Three in a row!!"
 
-if command -v banner # only do this is they have banner
+if command -v banner &> /dev/null # only do this is they have banner, don't print command if it finds it
 then
 	if [ $current_player == X ]
 	then  banner " XXX"
